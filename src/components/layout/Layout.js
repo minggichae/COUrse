@@ -1,15 +1,18 @@
 import React from "react";
 import Footer from "../footer/Footer";
 import Header from "../header/Header";
-import Search from "../search/search";
+import KeywordSearch from "../keywordSearch/KeywordSearch";
 import "./Layout.css";
+import Product from "../product/Product";
+import ProductList from "../productlist/ProductList";
 
 const Layout = ({ children }) => {
   return (
     <div className="layout">
       <Header />
       <div className="main">
-        <Search />
+        <ProductList />
+        <Product />
       </div>
       <Footer />
     </div>

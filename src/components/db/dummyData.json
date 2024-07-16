@@ -1,0 +1,16 @@
+{
+  "category": [
+    { "id": 1, "keyword": "도서" },
+    { "id": 2, "keyword": "과일" },
+    { "id": 3, "keyword": "전자기기" }
+  ],
+  "products": [
+    { "id": 1, "keyword": "도서", "name": "내가 틀릴 수도 있습니다" },
+    { "id": 1, "keyword": "도서", "name": "참 괜찮은 태도" },
+    { "id": 1, "keyword": "도서", "name": "결심이 필요한 순간들" },
+    { "id": 2, "keyword": "과일", "name": "사과" },
+    { "id": 2, "keyword": "과일", "name": "바나나" },
+    { "id": 3, "keyword": "전자기기", "name": "아이폰" },
+    { "id": 3, "keyword": "전자기기", "name": "컴퓨터" }
+  ]
+}
