@@ -15,14 +15,13 @@ export default function Product() {
     <div className="main">
       <div className="inline__container">
         <div className="search__keyword">
-          키워드 검색창
+          키워드 검색 <t />
           <KeywordSearch keyword={keyword} setKeyword={setKeyword} />
         </div>
-        <button className="search__button">검색 버튼</button>
       </div>
       <div className="search__itembox">
         <div className="search__item">
-          검색된 상품
+          <h3>상품 목록</h3>
           <table>
             <tbody>
               {productList.map((product) => (
