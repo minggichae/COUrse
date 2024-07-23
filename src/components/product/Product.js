@@ -1,37 +1,56 @@
 import React from "react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import KeywordSearch from "../keywordSearch/KeywordSearch";
 
 import dummyData from "../db/dummyData.json";
 
 export default function Product() {
   const [keyword, setKeyword] = useState("도서");
+  const [Searchbtn, setSearchbtn] = useState(false);
   const productList = dummyData.products.filter(
     (category) => category.keyword === keyword
   );
+
   console.log(productList);
+
+  useEffect(() => {
+    if (Searchbtn && productList.length === 0) {
+      setSearchbtn(false);
+    }
+  }, [Searchbtn, productList.length]);
 
   return (
     <div className="main">
       <div className="inline__container">
         <div className="search__keyword">
           키워드 검색 <t />
-          <KeywordSearch keyword={keyword} setKeyword={setKeyword} />
+          <KeywordSearch
+            keyword={keyword}
+            setKeyword={setKeyword}
+            Searchbtn={Searchbtn}
+            setSearchbtn={setSearchbtn}
+          />
         </div>
       </div>
       <div className="search__itembox">
-        <div className="search__item">
-          <h3>상품 목록</h3>
-          <table>
-            <tbody>
-              {productList.map((product) => (
-                <tr>
-                  <td>{product.name}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+        {Searchbtn ? (
+          <div className="search__item">
+            <h3>상품 목록</h3>
+            <table>
+              <tbody>
+                {productList.map((product) => (
+                  <tr>
+                    <td>{product.name}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div className="search__item">
+            <p>상품의 키워드를 검색하세요.</p>
+          </div>
+        )}
       </div>
       <button className="navigate__coupang">쿠팡 사이트로 이동</button>
       {/*이 상자가 검색 되는 물품 개수에 따라서 나와야 함*/}
