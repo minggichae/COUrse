@@ -1,6 +1,6 @@
 export default function Product() {
     return(
-    <div className="main">
+    <div className="product__main">
         <div className="inline__container">
         <div className="search__keyword">키워드 검색창</div> 
             <button className="search__button">검색 버튼</button>
