@@ -1,7 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import KeywordSearch from "../keywordSearch/KeywordSearch";
-import dummyData from "../db/dummyData.json";
+import dummyData from "../../Dummy/dummyData.json";
 
 export default function Product() {
   const [keyword, setKeyword] = useState("");
