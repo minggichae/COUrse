@@ -6,13 +6,11 @@ export default function Search({
   setKeyword,
   Searchbtn,
   setSearchbtn,
+  handleProductList,
 }) {
   // 입력한 키워드를 넣기위한 함수
   const KeywordInput = (e) => {
     setKeyword(e.target.value);
-  };
-
-  const Searchbtnboolean = () => {
     setSearchbtn(true);
   };
 
@@ -25,7 +23,7 @@ export default function Search({
         className="keyword-input"
         placeholder="상품을 검색하세요"
       />
-      <button className="keyword-btn" onClick={Searchbtnboolean}>
+      <button className="keyword-btn" onClick={handleProductList}>
         검색
       </button>
     </>

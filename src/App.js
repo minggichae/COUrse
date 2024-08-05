@@ -1,10 +1,14 @@
 import React from "react";
-import Layout from "./components/layout/Layout";
+import Header from "./components/header/Header";
+import Product from "./components/product/Product";
+import Footer from "./components/footer/Footer";
 
 function App() {
   return (
     <>
-      <Layout>{/* // router 처리를 할 공간 */}</Layout>
+      <Header />
+      <Product />
+      <Footer />
     </>
   );
 }
