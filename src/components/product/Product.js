@@ -13,17 +13,12 @@ export default function Product() {
 
   const handleProductList = (e) => {
     const dummyList = dummyData.products.filter(
-      (category) => category.keyword === keyword
+      (products) => products.keyword === keyword
     );
 
     setProductList(dummyList);
   };
 
-  useEffect(() => {
-    if (Searchbtn == 0) {
-      setSearchbtn(false);
-    }
-  }, [Searchbtn]);
 
   return (
     <div className="product__main">
@@ -44,15 +39,17 @@ export default function Product() {
         {Searchbtn ? (
           <div className="search__item">
             <h3>상품 목록</h3>
-            <table>
-              <tbody>
-                {productList.map((product) => (
-                  <tr>
-                    <td>{product.name}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+            <div className="product__cards"> {/* !!! card css 처리 필요*/}
+              {productList.map((products) => (
+                <div key={products.id} className="product__card"> {/* !!! card css 처리 필요*/}
+                  <h4>{products.name}</h4>
+                  <p>세부 정보1: {products.star}</p>
+                  <p>세부 정보2: {products.star}</p>
+                  <p>세부 정보3: {products.star}</p>
+                  <p>세부 정보4: {products.star}</p> {/* !!! 세부 정보 dummy data 수정 필요*/}
+                </div>
+              ))}
+            </div>
           </div>
         ) : (
           <div className="search__item">
