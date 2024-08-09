@@ -1,10 +1,8 @@
 import React from "react";
-import { useState } from "react";
 
 export default function Search({
   keyword,
   setKeyword,
-  Searchbtn,
   setSearchbtn,
   handleProductList,
 }) {

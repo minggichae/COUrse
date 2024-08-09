@@ -1,29 +1,29 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import KeywordSearch from "../keywordSearch/KeywordSearch";
-import dummyData from "../db/dummyData.json";
+import dummyData from "../../Dummy/dummyData.json";
 
 export default function Product() {
-  const [keyword, setKeyword] = useState("");
-  const [Searchbtn, setSearchbtn] = useState(false);
-  const [productList, setProductList] = useState([]);
+  const [keyword, setKeyword] = useState(""); // 검색하는 키워드를 저장하는 state
+  const [searchbtn, setSearchbtn] = useState(false); // 버튼의 true, false를 저장하는 state
+  const [productList, setProductList] = useState([]); // 상품 목록을 저장하는 state
+  const [keywordList, setKeywordList] = useState([]); // 키워드 목록을 저장하는 state
 
-  console.log(productList);
-  console.log(keyword);
+  // 사이트가 렌더링될 때 실행
+  useEffect(() => {
+    // 중복 없는 키워드 목록 생성
+    const keywords = [...new Set(dummyData.category.map((cat) => cat.keyword))];
+    setKeywordList(keywords);
+  }, []);
 
-  const handleProductList = (e) => {
+  // 검색 버튼을 누르면 실행
+  const handleProductList = () => {
     const dummyList = dummyData.products.filter(
-      (category) => category.keyword === keyword
+      (product) => product.keyword === keyword
     );
 
     setProductList(dummyList);
+    setSearchbtn(true); // 검색 버튼을 클릭한 후에는 항상 true로 설정
   };
-
-  useEffect(() => {
-    if (Searchbtn == 0) {
-      setSearchbtn(false);
-    }
-  }, [Searchbtn]);
 
   return (
     <div className="product__main">
@@ -37,17 +37,22 @@ export default function Product() {
             handleProductList={handleProductList}
           />
           <p />
-          키워드 목록 {}
+          <p>키워드 목록</p>
+          <ul>
+            {keywordList.map((keywordItem, index) => (
+              <t key={index}>{keywordItem} </t>
+            ))}
+          </ul>
         </div>
       </div>
       <div className="search__itembox">
-        {Searchbtn ? (
+        {searchbtn ? (
           <div className="search__item">
             <h3>상품 목록</h3>
             <table>
               <tbody>
-                {productList.map((product) => (
-                  <tr>
+                {productList.map((product, index) => (
+                  <tr key={index}>
                     <td>{product.name}</td>
                   </tr>
                 ))}
@@ -63,9 +68,6 @@ export default function Product() {
       </div>
       <p></p>
       <button className="navigate__coupang">쿠팡 사이트로 이동</button>
-      {/*이 상자가 검색 되는 물품 개수에 따라서 나와야 함*/}
-      {/*일단 검색 했을 때의 정보를 usestate로 바꿀 수 있어야 할 듯?*/}
-      {/*상자 안에는 상품에 대한 정보(상품명, 로켓 배송 여부, 별점, 판매 가격, 할인율 등)에 대한 value 필요 */}
     </div>
   );
 }
